@@ -1,0 +1,166 @@
+gdb) info functions
+All defined functions:
+
+Non-debugging symbols:
+0x0000000000001000  _init
+0x0000000000001050  __cxa_finalize@plt
+0x0000000000001060  __stack_chk_fail@plt
+0x0000000000001070  __printf_chk@plt
+0x0000000000001080  _start
+0x00000000000010b0  deregister_tm_clones
+0x00000000000010e0  register_tm_clones
+0x0000000000001120  __do_global_dtors_aux
+0x0000000000001160  frame_dummy
+0x0000000000001169  funcao2
+0x000000000000117f  funcao1
+0x000000000000118b  main
+0x0000000000001250  __libc_csu_init
+0x00000000000012c0  __libc_csu_fini
+0x00000000000012c8  _fini
+(gdb) info variables
+All defined variables:
+
+Non-debugging symbols:
+0x0000000000002000  _IO_stdin_used
+0x0000000000002034  __GNU_EH_FRAME_HDR
+0x00000000000021bc  __FRAME_END__
+0x0000000000003db0  __frame_dummy_init_array_entry
+0x0000000000003db0  __init_array_start
+0x0000000000003db8  __do_global_dtors_aux_fini_array_entry
+0x0000000000003db8  __init_array_end
+0x0000000000003dc0  _DYNAMIC
+0x0000000000003fb0  _GLOBAL_OFFSET_TABLE_
+0x0000000000004000  __data_start
+0x0000000000004000  data_start
+0x0000000000004008  __dso_handle
+0x0000000000004010  __TMC_END__
+0x0000000000004010  __bss_start
+0x0000000000004010  _edata
+0x0000000000004010  completed
+0x0000000000004014  times_called
+0x0000000000004018  _end
+(gdb) disas
+Nenhum quadro selecionado.
+(gdb) info disas
+info command indefinido: "disas". Tente "help info".
+(gdb) disas 
+Nenhum quadro selecionado.
+(gdb) disas funcao1
+Dump of assembler code for function funcao1:
+   0x000000000000117f <+0>:	endbr64 
+   0x0000000000001183 <+4>:	add    $0x1,%edi
+   0x0000000000001186 <+7>:	mov    %edi,%eax
+   0x0000000000001188 <+9>:	add    (%rsi),%eax
+   0x000000000000118a <+11>:	retq   
+End of assembler dump.
+(gdb) breakpoint funcao1
+command indefinido: "breakpoint". Tente "help".
+(gdb) run
+Starting program: /home/lais/SistemasHardwareSoftware/material/aulas/03-arquitetura-x86/funcao1 
+Resultado: 31
+funcao2: 11
+funcao2: 12
+times_called: 2
+[Inferior 1 (process 2031) exited normally]
+(gdb) run breakpoint funcao1
+Starting program: /home/lais/SistemasHardwareSoftware/material/aulas/03-arquitetura-x86/funcao1 breakpoint funcao1
+Resultado: 31
+funcao2: 11
+funcao2: 12
+times_called: 2
+[Inferior 1 (process 2035) exited normally]
+(gdb) run
+Starting program: /home/lais/SistemasHardwareSoftware/material/aulas/03-arquitetura-x86/funcao1 breakpoint funcao1
+Resultado: 31
+funcao2: 11
+funcao2: 12
+times_called: 2
+[Inferior 1 (process 2058) exited normally]
+(gdb) info registers edi
+The program has no registers now.
+(gdb) breakpoint funcao1
+command indefinido: "breakpoint". Tente "help".
+(gdb) breakpoint funcao1 run
+command indefinido: "breakpoint". Tente "help".
+(gdb) run breakpoint funcao1
+Starting program: /home/lais/SistemasHardwareSoftware/material/aulas/03-arquitetura-x86/funcao1 breakpoint funcao1
+Resultado: 31
+funcao2: 11
+funcao2: 12
+times_called: 2
+[Inferior 1 (process 2067) exited normally]
+(gdb) info registers edi
+The program has no registers now.
+(gdb) break funcao1
+Ponto de parada 1 at 0x55555555517f
+(gdb) run 
+Starting program: /home/lais/SistemasHardwareSoftware/material/aulas/03-arquitetura-x86/funcao1 breakpoint funcao1
+
+Breakpoint 1, 0x000055555555517f in funcao1 ()
+(gdb) disas funcao 1
+No symbol "funcao" in current context.
+(gdb) disas funcao1
+Dump of assembler code for function funcao1:
+=> 0x000055555555517f <+0>:	endbr64 
+   0x0000555555555183 <+4>:	add    $0x1,%edi
+   0x0000555555555186 <+7>:	mov    %edi,%eax
+   0x0000555555555188 <+9>:	add    (%rsi),%eax
+   0x000055555555518a <+11>:	retq   
+End of assembler dump.
+(gdb) print $edi
+$1 = 10
+(gdb) stepi
+0x0000555555555183 in funcao1 ()
+(gdb) disas funcao1
+Dump of assembler code for function funcao1:
+   0x000055555555517f <+0>:	endbr64 
+=> 0x0000555555555183 <+4>:	add    $0x1,%edi
+   0x0000555555555186 <+7>:	mov    %edi,%eax
+   0x0000555555555188 <+9>:	add    (%rsi),%eax
+   0x000055555555518a <+11>:	retq   
+End of assembler dump.
+(gdb) print $edi
+$2 = 10
+(gdb) stepi
+0x0000555555555186 in funcao1 ()
+(gdb) disas funcao1
+Dump of assembler code for function funcao1:
+   0x000055555555517f <+0>:	endbr64 
+   0x0000555555555183 <+4>:	add    $0x1,%edi
+=> 0x0000555555555186 <+7>:	mov    %edi,%eax
+   0x0000555555555188 <+9>:	add    (%rsi),%eax
+   0x000055555555518a <+11>:	retq   
+End of assembler dump.
+(gdb) print $edi
+$3 = 11
+(gdb) print $rsi
+$4 = 140737488346868
+(gdb) x
+Argumento necessário (starting display address).
+(gdb) x /1wd Quit
+(gdb) x /1wd 140737488346868
+0x7fffffffdef4:	20
+(gdb) stepi
+0x0000555555555188 in funcao1 ()
+(gdb) stepi
+0x000055555555518a in funcao1 ()
+(gdb) disas funcao1
+Dump of assembler code for function funcao1:
+   0x000055555555517f <+0>:	endbr64 
+   0x0000555555555183 <+4>:	add    $0x1,%edi
+   0x0000555555555186 <+7>:	mov    %edi,%eax
+   0x0000555555555188 <+9>:	add    (%rsi),%eax
+=> 0x000055555555518a <+11>:	retq   
+End of assembler dump.
+(gdb) print $eax
+$5 = 31
+(gdb) continue
+Continuing.
+Resultado: 31
+funcao2: 11
+funcao2: 12
+times_called: 2
+[Inferior 1 (process 2584) exited normally]
+(gdb) 
+
+

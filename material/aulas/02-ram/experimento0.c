@@ -23,6 +23,7 @@ int main() {
     /* 
      * %x mostra um número em hexa
      */
+    printf("%d", num.i);
     printf("%#08x\n", num.i);
     
     return 0;
