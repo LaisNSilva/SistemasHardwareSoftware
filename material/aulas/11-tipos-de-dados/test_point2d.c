@@ -76,6 +76,6 @@ int test_theta() {
     return 0;
 }
 
-test_list = { TEST(test_new_destroy_get), TEST(test_scale), TEST(test_add), TEST(test_theta) };
+test_list = { TEST(test_new_destroy_get), TEST(test_add), TEST(test_theta), TEST(test_scale)};
 
 #include "mintest/runner.h"
