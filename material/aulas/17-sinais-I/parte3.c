@@ -16,7 +16,8 @@ int main() {
 
     int wst;
     sleep(10);
-    kill(getpid(), SIGKILL);
+    kill(filho, SIGKILL);
+    
     wait(&wst);
     printf("EXITED %d \n"
         "SIGNALED %d \n"
