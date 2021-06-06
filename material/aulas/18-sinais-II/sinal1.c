@@ -8,9 +8,9 @@ void sig_handler(int num) {
     printf("Chamou Ctrl+C\n");
     i++;
     if(i>2){
-        //exit(1)
+        //exit(1) // com 3 ctrl+c sai
         struct sigaction s2;
-        s2.sa_handler = SIG_DFL; // aqui vai a função a ser executada
+        s2.sa_handler = SIG_DFL; // comportamento padrão (faz o que o sinal manda)
         sigemptyset(&s2.sa_mask);
         s2.sa_flags = 0;
 

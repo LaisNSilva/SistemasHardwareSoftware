@@ -16,7 +16,7 @@ int main() {
 
     int wst;
     sleep(10);
-    kill(filho, SIGKILL);
+    kill(filho, SIGKILL); // terminar no proprio programa!
     
     wait(&wst);
     printf("EXITED %d \n"

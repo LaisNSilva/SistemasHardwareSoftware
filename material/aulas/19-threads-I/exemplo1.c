@@ -2,6 +2,10 @@
 #include <pthread.h>
 #include <stdio.h>
 
+
+// para compilar tem que usar a flag no final 
+// -pthread
+
 void *minha_thread(void *arg) {
     printf("Hello thread!\n");
     return NULL;

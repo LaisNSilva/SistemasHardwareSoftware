@@ -2,6 +2,10 @@
 #include <stdio.h>
 #include <sys/wait.h>
 #include <sys/types.h>
+#include <string.h>
+
+
+
 
 int main() {
     pid_t filho;
@@ -23,5 +27,8 @@ int main() {
         WTERMSIG(wst),
         strsignal(WTERMSIG(wst)));
 
+        // 1. o porgrama acabou normalmente? (não)
+        // 2. o programa foi terminado por algum sinal? (sim)
+        // 3. sinal 8 - traduz com strsignal!!
     return 0;
 }

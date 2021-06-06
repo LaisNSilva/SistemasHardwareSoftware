@@ -1,8 +1,9 @@
-#include <sys/types.h>
-#include <sys/wait.h>
+#include <sys/types.h> // para o wait
+#include <sys/wait.h> // para o wait
 #include <unistd.h>
 #include <stdio.h>
- 
+#include <stdlib.h> // para o sleep
+
 
 int main() {
    
@@ -17,9 +18,9 @@ int main() {
         
     } else {
     	int wstatus;
-    	wait(&wstatus);
+    	wait(&wstatus); //preenche wstatus pra mim
     	printf("Filho acabou\n");
-    	// Macro retorna 1 se o proegrama acabou normalmente 
+    	// Macro retorna 1 se o proegrama acabou normalmente e 0 se crachou(divisão por 0por exemplo)
     	printf("Terminou normal?: %d\n", WIFEXITED(wstatus));
     	printf("Valor de retorno: %d\n", WEXITSTATUS(wstatus));
         
