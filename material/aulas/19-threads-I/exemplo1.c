@@ -5,6 +5,7 @@
 
 // para compilar tem que usar a flag no final 
 // -pthread
+// gcc exemplo1.c -o exemplo1 -pthread
 
 void *minha_thread(void *arg) {
     printf("Hello thread!\n");
