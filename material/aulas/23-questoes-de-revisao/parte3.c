@@ -3,7 +3,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-// linha de compilação: 
+// linha de compilação: gcc -Wall -pedantic -std=gnu99 -Og -o parte3 parte3.c -pthread
 
 /* declarar tarefas aqui e lançar no main */
 
